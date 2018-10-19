@@ -1,7 +1,4 @@
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
-<html>
-<head></head>
-<body>
-
-</body>
-</html>
+<c:out value="${title}"/><br>
+<c:out value="${message}"/>
