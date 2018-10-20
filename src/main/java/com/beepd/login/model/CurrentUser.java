@@ -1,13 +1,15 @@
 package com.beepd.login.model;
 
-import org.springframework.security.core.userdetails.User;
+import com.beepd.login.entity.User;
+import org.springframework.security.core.authority.AuthorityUtils;
 
-public class CurrentUser extends User {
+public class CurrentUser extends org.springframework.security.core.userdetails.User {
 
     private User user;
 
-    CurrentUser(User user){
-        super(user.getUsername(), user.getPassword(), user.getAuthorities());
+    public CurrentUser(User user){
+        super(user.getUsername(), user.getPassword(),
+                AuthorityUtils.createAuthorityList(user.getRole().toString()));
         this.user = user;
     }
 
@@ -15,4 +17,7 @@ public class CurrentUser extends User {
         return user;
     }
 
+    public Role getRole() {
+        return user.getRole();
+    }
 }
