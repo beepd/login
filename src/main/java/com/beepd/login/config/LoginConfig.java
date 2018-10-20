@@ -25,11 +25,13 @@ public class LoginConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/home").permitAll()
                 .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/super").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPER')")
+                .antMatchers("/**").permitAll()
                 .and()
-                .formLogin()
+                //.httpBasic()
+                .formLogin().loginPage("/login").usernameParameter("username").passwordParameter("password")
+                //.loginProcessingUrl("/login")
                 .permitAll()
                 .and()
                 .logout()

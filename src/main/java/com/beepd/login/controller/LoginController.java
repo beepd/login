@@ -15,11 +15,16 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @RequestMapping(value = "home", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
     public String showHome(Model model) {
         model.addAttribute("title", "Spring security example");
         model.addAttribute("message", "Hello World !");
         return "home";
+    }
+
+    @RequestMapping(value = "login", method = RequestMethod.GET)
+    public String showLoginPage() {
+        return "loginPage";
     }
 
     @RequestMapping(value = "admin", method = RequestMethod.GET)
