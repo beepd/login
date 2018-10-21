@@ -30,9 +30,8 @@ public class LoginConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").permitAll()
                 .and()
                 //.httpBasic()
-                .formLogin().loginPage("/login").usernameParameter("username").passwordParameter("password")
-                //.loginProcessingUrl("/login")
-                .permitAll()
+                .formLogin().loginPage("/login").loginProcessingUrl("/login")
+                .usernameParameter("username").passwordParameter("password")
                 .and()
                 .logout()
                 .permitAll();
