@@ -37,8 +37,8 @@ public class LoginConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
-    //@Bean
-    public PasswordEncoder passwordEncoder1() {
+    @Bean
+    public PasswordEncoder passwordEncoder() {
 
         return new PasswordEncoder(){
             @Override
@@ -53,9 +53,9 @@ public class LoginConfig extends WebSecurityConfigurerAdapter {
         };
     }
 
-    @Bean
+    /*@Bean
     public static NoOpPasswordEncoder passwordEncoder() {
         return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
-    }
+    }*/
 
 }
