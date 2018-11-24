@@ -11,15 +11,24 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.sql.DataSource;
+
 @Configuration
 public class LoginConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserDetailsService userDetailsService;
 
+    @Autowired
+    DataSource dataSource;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        //UserDetailsService
+        //auth.userDetailsService(userDetailsService);
+
+        //JDBCAuthentication
+        auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder());
     }
 
     @Override
